@@ -59,10 +59,8 @@ let changePanel = function () {
   if (divCorrespondante) {
     // Ajoutr la classe active
     divCorrespondante.classList.add("active");
-    console.log(buttonActive);
   } else {
     panelActive.classList.add("active");
-    console.log("Pas de div correspondante")
   }
 }
 // Ajouter un écouteur d'évenement sur mes boutons
