@@ -102,18 +102,52 @@ let parent1 = document.querySelector("#exo4 #parent1");
 
 let parent2 = document.querySelector("#exo4 #parent2");
 
-let enfant = document.querySelector("#exo4 #enfant")
+let enfant = document.querySelector("#exo4 #enfant");
+
+let nbClic = 0;
 
 // Fonction de déplacement
 let deplacement = function () {
-
+  event.preventDefault();
   if (parent1.children.length != 0) {
+
     // Mettre le le contenu de ma col dans l'autre
     parent2.appendChild(enfant);
   } else {
     parent1.appendChild(enfant);
-  }
+  };
+
+  nbClic++;
+  document.querySelector("#exo4 #comptage").textContent = "Tu as cliqué " + nbClic + " fois !";
 };
-console.log(parent2.children);
+
 boutondeplacement.addEventListener("click", deplacement);
 
+// Exo5
+// Récupération du bouton
+let ajoutEgg = document.querySelector("#exo5 #add-egg");
+
+let panier = document.querySelector("#exo5 #panier");
+
+let nbEgg = 0;
+
+let ajouterEgg = function () {
+  // Création de l'élément "img"
+  let newEgg = document.createElement("img");
+
+  // Ajout attributs
+  newEgg.setAttribute("src", "../img/fuck.jpg");
+  newEgg.setAttribute("width", "100px");
+
+  // Mettre le nouvel oeuf dans le panier
+  panier.appendChild(newEgg);
+
+  nbEgg++;
+  if (nbEgg == 1) {
+    document.querySelector("#exo5 #nbEgg").textContent = "Tu as " + nbEgg + " problème";
+  } else {
+    document.querySelector("#exo5 #nbEgg").textContent = "Tu as " + nbEgg + " problèmes";
+  }
+}
+
+ajoutEgg.addEventListener("click", ajouterEgg);
