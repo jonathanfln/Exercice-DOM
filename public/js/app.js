@@ -8,3 +8,4 @@ import "./exo7.js";
 import "./exo8.js";
 import "./exo9.js";
 import "./exo10.js";
+import "./fontawesome.js";
