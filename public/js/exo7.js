@@ -19,7 +19,7 @@ let buttonTask;
 
 
 // Fonction ajoutant l'activité
-let createTask = function (event) {
+let createTask = () => {
   // Remise à zéro du contour
   nameTask.placeholder = "New task ...";
   nameTask.classList.remove("border", "border-danger");
@@ -104,11 +104,14 @@ let changeName = () => {
   let contenu = divContenu.querySelector("#taskList input");
   let h4 = divContenu.querySelector("h4");
 
+  // Si l'input est vide, il ne modifie pas le nom
   if (divContenu.querySelector("#taskList input").value == "") {
     contenu.classList.add("border", "border-danger");
     contenu.placeholder = "You must give a name";
     return;
   };
+
+  // Enlever la bordure rouge
   contenu.classList.remove("border", "border-danger");
   // Modifie le nom de la tâche + suppression de l'input et bouton
   h4.textContent = contenu.value;
@@ -122,8 +125,18 @@ let suppTask = () => {
 };
 
 // Fonction des filtres 
-let allFilter = function (event) {
-
+let allFilter = () => {
+  let btnFilter = event.target.textContent;
+  if (event.target.textContent == "All") {
+    taskList.classList.remove("all-done");
+    taskList.classList.remove("all-todo");
+  } else if (event.target.textContent == "Todo") {
+    taskList.classList.remove("all-done");
+    taskList.classList.add("all-todo");
+  } else if (event.target.textContent == "Done") {
+    taskList.classList.add("all-done");
+    taskList.classList.remove("all-todo");
+  };
 };
 
 // Click du bouton add task
@@ -133,4 +146,3 @@ addTask.addEventListener("click", createTask);
 filter.forEach(element => {
   element.addEventListener("click", allFilter);
 });
-
